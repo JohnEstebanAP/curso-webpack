@@ -23,7 +23,7 @@ module.exports = {
       '@images': path.resolve(__dirname, 'src/assets/images/'),
     }
   },
-  module:{
+  module: {
     rules: [
       {
         test: /\.m?js$/,
@@ -55,7 +55,6 @@ module.exports = {
             publicPath: "../assets/fonts/",
             esModule: false,
           },
-
         }
       }
     ]
@@ -88,5 +87,3 @@ module.exports = {
     ]
   }
 }
-
-

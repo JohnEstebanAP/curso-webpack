@@ -2,9 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: './src/index.js',
@@ -23,7 +22,7 @@ module.exports = {
       '@images': path.resolve(__dirname, 'src/assets/images/'),
     }
   },
-  module:{
+  module: {
     rules: [
       {
         test: /\.m?js$/,
@@ -55,7 +54,6 @@ module.exports = {
             publicPath: "../assets/fonts/",
             esModule: false,
           },
-
         }
       }
     ]
@@ -78,13 +76,16 @@ module.exports = {
       ]
     }),
     new Dotenv(),
+    // new BundleAnalyzerPlugin(),
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+      // contenBase: path.join(__dirname, 'dist'),
+    },
+    //contentBase: path.join(__dirname, 'dist'),
     compress: true,
     historyApiFallback: true,
-    port: 3022,
-  }
+    port: 9000,
+  },
 }
-
-
